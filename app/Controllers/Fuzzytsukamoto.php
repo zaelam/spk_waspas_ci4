@@ -220,7 +220,7 @@ class Fuzzytsukamoto extends BaseController
 			$kriteria=['kelengkapan','estimasi_pengiriman','user_experience','respon_pelayanan','metode_pembayaran','kemudahan_fitur','kepercayaan','penanganan_komplain','cashback','pengiriman'];
 			$bobot = $bobotModel->findAll();
 			$respons = $responModel->join('marketplace','marketplace.id_marketplace=respon.id_marketplace')
-								->join('user','user.id=respon.id_user')
+								// ->join('user','user.id=respon.id_user')
 								->where('respon.id_user',$i)
 								->findAll();
 
@@ -409,6 +409,13 @@ class Fuzzytsukamoto extends BaseController
 			'commerce5' => $commerce5,
 			'waspas' => $hasilFix,
 			'page' => 'hasil',
+        ]);
+	}
+
+	public function bobot()
+	{
+		return view('spk/bobot', [
+            'page' => 'bobot',
         ]);
 	}
 }

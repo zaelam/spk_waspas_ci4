@@ -21,12 +21,17 @@ class Auth extends BaseController
 
                 $user = new \App\Entities\User();
                 $user->username = $this->request->getPost('username');
+                $user->umur = $this->request->getPost('umur');
+                $user->pendidikan = $this->request->getPost('pendidikan');
+                $user->jenis_kelamin = $this->request->getPost('jenis_kelamin');
                 $user->password = $this->request->getPost('password');
                 $user->created_by = 0;
                 $user->created_date = date("Y-m-d H:i:s");
 
                 $userModel->save($user);
-                return view('login');
+                return view('login', [
+                    'page' => 'login',
+                ]);
             }
             $this->session->setFlashdata('errors', $errors);
         }

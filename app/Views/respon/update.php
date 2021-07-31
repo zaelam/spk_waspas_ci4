@@ -15,6 +15,19 @@
             05  => 'Blibli'
         ];
 
+        $id_frekuensi = [
+            'name' => 'frekuensi',
+            'id' => 'frekuensi',
+            'value' => $respon->frekuensi,
+            'class' => 'form-control'
+        ];
+
+        $opt_frekuensi = [
+            'jarang'  => 'jarang',
+            'sering'  => 'sering',
+            'sangat sering'  => 'sangat sering'
+        ];
+
         $kelengkapan = [
             'name' => 'kelengkapan',
             'id' => 'kelengkapan',
@@ -188,6 +201,10 @@
                         <div class="form-group">
                             <?= form_label("E-Commerce", "e-commerce") ?>
                             <?= form_dropdown($id_marketplace, $options, $respon->id_marketplace, 'large'); ?>
+                        </div>
+                        <div class="form-group">
+                            <?= form_label("Frekuensi", "Frekuensi") ?>
+                            <?= form_dropdown($id_frekuensi, $opt_frekuensi, $respon->frekuensi, 'large'); ?>
                         </div>
                         <div class="form-group">
                             <?= form_label("Kelengkapan", "kelengkapan") ?>

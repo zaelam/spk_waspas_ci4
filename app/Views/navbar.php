@@ -14,7 +14,7 @@
             <a class="nav-link <?php if($page == 'home'){ echo 'active'; } ?>" href="<?= site_url('home/index') ?>">Home</span></a>
         </li>
         
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle <?php if($page == 'respon'){ echo 'active'; } ?>" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup= "true" aria-expanded="false">Respon</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="<?= site_url('respon/list') ?>">List Respon</a>
@@ -22,18 +22,30 @@
               <a class="dropdown-item" href="<?= site_url('respon/tambah') ?>">Tambah Respon</a>
               
             </div>
+        </li> -->
+
+        <li class="nav-item">
+            <a class="nav-link <?php if($page == 'respon'){ echo 'active'; } ?>" href="<?= site_url('respon/list') ?>">List Respon</span></a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link <?php if($page == 'respon'){ echo 'active'; } ?>" href="<?= site_url('respon/tambah') ?>">Tambah Respon</span></a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link <?php if($page == 'proses'){ echo 'active'; } ?>" href="<?= site_url('spk/fuzzyfikasi') ?>">Proses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($page == 'bobot'){ echo 'active'; } ?>" href="<?= site_url('spk/bobot') ?>">Bobot</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($page == 'hasil'){ echo 'active'; } ?>" href="<?= site_url('spk/hasil') ?>">Hasil</a>
         </li>
         <?php if(session()->get('role') == 0): ?>
         <li class="nav-item">
             <a class="nav-link <?php if($page == 'user'){ echo 'active'; } ?>" href="<?= site_url('user/index') ?>">User</a>
         </li>
         <?php endif ?>
-        <li class="nav-item">
-            <a class="nav-link <?php if($page == 'hasil'){ echo 'active'; } ?>" href="<?= site_url('spk/hasil') ?>">Hasil</a>
-        </li>
         
         
     </ul>

@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
 $routes->get('/spk/fuzzyfikasi', 'Fuzzytsukamoto::index');
+$routes->get('/spk/bobot', 'Fuzzytsukamoto::bobot');
 $routes->get('/spk/hasil', 'Fuzzytsukamoto::hasil');
 $routes->get('/respon/list', 'Respon::index');
 $routes->get('/respon/tambah', 'Respon::create');

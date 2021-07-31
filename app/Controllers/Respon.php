@@ -18,13 +18,13 @@ class Respon extends BaseController
         // $respons = $responModel->findAll();
         if(session()->get('role') == 0){
             $respons = $responModel->join('marketplace','marketplace.id_marketplace=respon.id_marketplace')
-                                ->join('user','user.id=respon.id_user')
+                                // ->join('user','user.id=respon.id_user')
                                 ->findAll();
         }else{
             $id_user = session()->get('id');
             $respons = $responModel->join('marketplace','marketplace.id_marketplace=respon.id_marketplace')
-                                ->join('user','user.id=respon.id_user')
-                                ->where('id_user', $id_user)
+                                // ->join('user','user.id=respon.id_user')
+                                // ->where('id_user', $id_user)
                                 ->findAll();
         }
         return view('respon/index', [
@@ -42,16 +42,30 @@ class Respon extends BaseController
             $errors = $this->validation->getErrors();
 
             if (!$errors) {
+                $id = $this->session->get('id');
                 $responModel = new \App\Models\ResponModel();
+                // $userModel = new \App\Models\UserModel();
+                // $user = $userModel->findColumn('username,umur,pendidikan,jenis_kelamin')->where('id_user', $id);
+                $db      = \Config\Database::connect();
+                $builder = $db->table('user');
+                $builder->select('username,umur,pendidikan,jenis_kelamin');       // names of your columns
+                $builder->where('id', $id);                // where clause
+                $user = $builder->get();
+                $datauser = $user->getRow();
+                // var_dump($user->getResult());
+                // dd($datauser->username);
                 $respon = new \App\Entities\Respon();
-
+                $respon->nama = $datauser->username;
+                $respon->umur = $datauser->umur;
+                $respon->pendidikan = $datauser->pendidikan;
+                $respon->jenis_kelamin = $datauser->jenis_kelamin;
                 $respon->fill($data);
                 $respon->id_user = $this->session->get('id');
                 $respon->updated_by = $this->session->get('id');
                 $respon->created_date = date("Y-m-d H:i:s");
-
+                
+                // dd($respon);
                 $responModel->save($respon);
-
                 $id = $responModel->insertID();
 
                 $segments = ['respon', 'view', $id];

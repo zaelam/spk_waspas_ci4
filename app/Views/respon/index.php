@@ -6,6 +6,10 @@
         <thead>
             <th>No</th>
             <th>Nama</th>
+            <th>Umur</th>
+            <th>Pendidikan</th>
+            <th>Jenis Kelamin</th>
+            <th>Frekuensi</th>
             <th>E-Commerce</th>
             <th>Kelengkapan</th>
             <th>Kecepatan</th>
@@ -24,8 +28,12 @@
             <?php foreach($respons as $index=>$respon): ?>
                 <tr>
                     <td><?= ($index+1) ?></td>
-                    <td><?= $respon->username ?></td>
                     <td><?= $respon->nama ?></td>
+                    <td><?= $respon->umur ?></td>
+                    <td><?= $respon->pendidikan ?></td>
+                    <td><?= $respon->jenis_kelamin ?></td>
+                    <td><?= $respon->frekuensi ?></td>
+                    <td><?= $respon->nama_marketplace ?></td>
                     <td><?= $respon->kelengkapan ?></td>
                     <td><?= $respon->estimasi_pengiriman ?></td>
                     <td><?= $respon->user_experience ?></td>
